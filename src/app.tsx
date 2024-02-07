@@ -20,7 +20,10 @@ function App() {
       <div className="grid grid-cols-3 gap-6 auto-rows-[250px]">
         <NewNoteCard />
 
-        <NoteCard note={} />
+        <NoteCard note={{
+            date: new Date(),
+            content: "Hello World",
+          }} />
       </div>
     </div>
   )
