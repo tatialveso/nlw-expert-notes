@@ -1,4 +1,6 @@
 import logo from './assets/logo.svg'
+import NewNoteCard from './components/new-note-card'
+import NoteCard from './components/note-card'
 
 function App() {
   return (
@@ -14,6 +16,12 @@ function App() {
       </form>
 
       <div className="h-px bg-slate-700" />
+
+      <div className="grid grid-cols-3 gap-6 auto-rows-[250px]">
+        <NewNoteCard />
+
+        <NoteCard />
+      </div>
     </div>
   )
 }
