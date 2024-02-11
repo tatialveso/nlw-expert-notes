@@ -26,6 +26,21 @@ function NewNoteCard({ onNoteCreated }: NewNoteCardProps) {
         }
     }
 
+    const handleSaveNote = (e: FormEvent) => {
+        e.preventDefault()
+
+        if(content === "") {
+            return
+        }
+
+        onNoteCreated(content)
+
+        setContent('')
+        setShouldShowOnboarding(true)
+
+        toast.success('nota criada com sucesso!')
+    }
+
     const handleStartRecording = () => {
         setIsRecording(true)
         setShouldShowOnboarding(false)
@@ -60,21 +75,6 @@ function NewNoteCard({ onNoteCreated }: NewNoteCardProps) {
         if(speechRecognition !== null) {
             speechRecognition.stop()
         }
-    }
-
-    const handleSaveNote = (e: FormEvent) => {
-        e.preventDefault()
-
-        if(content == "") {
-            return
-        }
-
-        onNoteCreated(content)
-
-        setContent('')
-        setShouldShowOnboarding(true)
-
-        toast.success('nota criada com successo!')
     }
 
     return (
@@ -123,12 +123,12 @@ function NewNoteCard({ onNoteCreated }: NewNoteCardProps) {
                         ) : (
                             <button
                                 type="button"
-                                onSubmit={handleSaveNote}
+                                onClick={handleSaveNote}
                                 className="w-full bg-lime-400 py-4 text-center text-sm font-medium text-lime-950 outline-none group hover:bg-lime-500"
                             >
                                 Salvar nota
                             </button>
-                        )}
+                        ) }
                     </form>
                 </Dialog.Content>
             </Dialog.Portal>
